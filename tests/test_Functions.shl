@@ -1,0 +1,43 @@
+import
+    cli
+
+fn add(a, b) = {
+    return a + b
+}
+
+fn subtract(a, b) = {
+    return a - b
+}
+
+fn multiply(a, b) = {
+    return a * b
+}
+
+fn divide(a, b) = {
+    if b == 0 {
+        display("Error: Division by zero")
+        return nil
+    }
+    return a / b
+}
+
+fn greet(name) = {
+    display("Hello, " + name + "!")
+}
+
+fn main() = {
+    display("Function Examples")
+    display("----------------")
+    
+    var x = 10
+    var y = 5
+    
+    display("x = " + x + ", y = " + y)
+    display("x + y = " + add(x, y))
+    display("x - y = " + subtract(x, y))
+    display("x * y = " + multiply(x, y))
+    display("x / y = " + divide(x, y))
+    
+    var name = read("Enter your name: ")
+    greet(name)
+}

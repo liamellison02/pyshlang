@@ -37,7 +37,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    print(f"""<pyshlang v{__version__}>\n\nWell here goes nothing...\n\n""")
+    print(f"""<pyshlang v{__version__}>\n\nWell, here goes nothing...\n\n""")
     try:
         main()
     except SHLError as e:

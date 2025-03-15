@@ -198,7 +198,7 @@ class Lexer:
                 res += char
                 i += 1
         
-        return result
+        return res
 
     def _create_token(self, token_type: TokenType, lexeme: str, line: int = 1, 
                      col_start: int = 1, col_end: int | None = None, 
@@ -248,7 +248,6 @@ class Lexer:
         if self._is_identifier(lexeme):
             return self._create_token(TokenType.IDENTIFIER, lexeme)
         
-        # If we get here, the token is not recognized
         raise SHLError(f"Unexpected token: '{lexeme}'")
     
     def _try_parse_two_char_token(self, lexeme: str) -> Token | None:
@@ -261,14 +260,14 @@ class Lexer:
         Returns:
             A Token object if successful, None otherwise
         """
-        # Check for two-character tokens ("==", "!=", etc.)
+        # len(2) tokens ("==", "!=", etc.)
         if len(lexeme) == 2 and lexeme[0] in self._two_char_tokens:
             first_char, expected_second, two_char_type = self._two_char_tokens[lexeme[0]]
             if first_char and expected_second and two_char_type:
                 if lexeme[1] == expected_second:
                     return self._create_token(two_char_type, lexeme)
         
-        # Check for single-character tokens that could be part of two-character tokens
+        # len(1) tokens ("=", "!", etc.)
         if len(lexeme) == 1 and lexeme in self._two_char_tokens:
             first_char_type = self._two_char_tokens[lexeme][0]
             if first_char_type:

@@ -1,0 +1,24 @@
+import
+    cli
+
+fn main() = {
+    var age = read("Enter your age: ")
+    
+    if age < 13 {
+        display("You are a child")
+    } else if age < 20 {
+        display("You are a teenager")
+    } else if age < 65 {
+        display("You are an adult")
+    } else {
+        display("You are a senior")
+    }
+    
+    var hasPermission = read("Do you have permission? (true/false): ")
+    
+    if hasPermission == "true" {
+        display("Access granted")
+    } else {
+        display("Access denied")
+    }
+}
