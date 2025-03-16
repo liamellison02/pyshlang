@@ -1,10 +1,12 @@
 from dataclasses import dataclass
 
-from .lexer import Lexer, TokenType, Token
+from .scanner import Scanner, TokenType, Token
 from .error import SHLError
+from .parser import Parser
 
 __all__ = [
-    "Lexer",
+    "Parser",
+    "Scanner",
     "TokenType",
     "Token",
     "SHLError",
@@ -17,14 +19,14 @@ class PyShlang:
     A wrapper class for the pyshlang interpreter.
     
     Attributes:
-        lexer: The lexer used to tokenize the source code
+        scanner: The scanner used to tokenize the source code
         src_path: The path to the source code file
     """
-    lexer: Lexer
+    scanner: Scanner
     src_path: str | None
 
     def __init__(self, src_path: str | None = None):
-        self.lexer = Lexer()
+        self.scanner = Scanner()
         self.src_path = src_path
 
     def run(self, src: str | None = None):
@@ -39,7 +41,7 @@ class PyShlang:
 
         for token in self.lexer.scan_tokens(src):
             print(f"{token}\n")
-
+            
     # TODO: implement run_prompt
     def run_prompt(self) -> None:
         raise NotImplementedError
