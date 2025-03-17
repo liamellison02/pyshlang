@@ -39,7 +39,7 @@ class PyShlang:
         if src is None:
             return
 
-        for token in self.lexer.scan_tokens(src):
+        for token in self.scanner.scan_tokens(src):
             print(f"{token}\n")
             
     # TODO: implement run_prompt

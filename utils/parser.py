@@ -1,7 +1,12 @@
 from dataclasses import dataclass
 from enum import Enum, auto
 
-from utils.lexer import Token
+from .scanner import Token, TokenType
+from .error import SHLError
+
+class SyntaxError(SHLError):
+    pass
+
 
 class ExprType(Enum):
     UNARY = auto()
@@ -13,6 +18,6 @@ class ExprType(Enum):
 class AST:
     pass
 
-@dataclass
-class Parser: 
-    pass
+class Parser:
+    def parse(self, tokens: list[Token]) -> AST:
+        pass
