@@ -1,7 +1,0 @@
-import
-    cli
-
-fn main() = {
-    var name = read("Enter your name: ")
-    display("Hello, " + name)
-}
